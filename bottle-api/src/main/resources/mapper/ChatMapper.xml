@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teorange.magic.bottle.api.mapper.ChatMapper">
+
+  <select id="goupByCount" parameterType="Integer" resultType="Map">
+    select
+    <choose>
+      <when test="countType == 1">
+        DATE_FORMAT(create_time,'%Y%m%d') days,count(chat_id) count from chat group by days
+      </when>
+      <when test="countType == 2">
+        DATE_FORMAT(create_time,'%Y%u') weeks,count(chat_id) count from chat group by weeks
+      </when>
+      <when test="countType == 3">
+        DATE_FORMAT(create_time,'%Y%m') months,count(chat_id) count from chat group by months
+      </when>
+      <when test="countType == 4">
+        DATE_FORMAT(create_time,'%Y') years,count(chat_id) count from chat group by years
+      </when>
+    </choose>
+  </select>
+</mapper>

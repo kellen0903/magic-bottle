@@ -1,0 +1,55 @@
+app:
+  name: bottle
+  role: command
+  clusterName: teorange
+  mongo:
+    address: 127.0.0.1
+    port: 27017
+    username: root
+    password: root
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/xmpdb?characterEncoding=utf-8&allowMultiQueries=true&autoReconnect=true
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  profiles:
+    include:
+    - axon-jgroups
+    - axon-eventstore
+    - axon-scheduler
+    - config
+    - mybatisplus
+
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.teorange.magic.bottle.api.domain
+
+
+axon:
+  eventstore:
+    aggregate-package: com.teorange.magic.bottle.command.aggregate
+
+server:
+  port: 8085
+  context-path: /magicbottle/api
+
+# jwt配置
+magic:
+  jwt:
+    secret: f4e2e52034348f86b67cde581c0f9eb5
+    # token有效时长，7天，单位秒
+    expire: 2592000
+    header: token
+
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teorange.magic.bottle.api.mapper.TipOffLogMapper">
+
+
+  <select id="queryTipOffCount" resultType="Integer">
+    SELECT count(DISTINCT (ip))
+    FROM tip_off_log
+    WHERE item_id = #{itemId};
+
+  </select>
+
+
+  <select id="countReport" resultType="com.teorange.magic.bottle.api.dto.TipOffReportDTO">
+    SELECT
+      to_user_id AS userId,
+      count(1)   AS count
+    FROM tip_off_log
+    WHERE 1=1
+    <if test="ew.toUid!=null and ew.toUid!=''">
+      AND to_user_id=#{ew.toUid}
+    </if>
+    <if test="ew.startTime!='' and ew.startTime!=null  and ew.endTime!='' and ew.endTime!=null">
+      AND create_time BETWEEN #{ew.startTime} AND #{ew.endTime}
+    </if>
+    GROUP BY to_user_id
+    HAVING count(to_user_id) > #{ew.num}
+    order by count desc
+  </select>
+
+
+</mapper>

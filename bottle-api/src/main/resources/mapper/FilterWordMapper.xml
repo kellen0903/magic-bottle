@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teorange.magic.bottle.api.mapper.FilterWordMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.teorange.magic.bottle.api.domain.FilterWordEntity" id="filterWordMap">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createUserName" column="create_user_name"/>
+    </resultMap>
+
+    <select id="queryPageList" resultMap="filterWordMap">
+        SELECT filter_word.*, sys_user.username as create_user_name
+        FROM filter_word
+        LEFT JOIN sys_user ON filter_word.user_id = sys_user.user_id
+        <where>
+            ${ew.sqlSegment}
+        </where>
+
+    </select>
+
+</mapper>

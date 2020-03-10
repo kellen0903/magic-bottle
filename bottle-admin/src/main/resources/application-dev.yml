@@ -1,0 +1,48 @@
+app:
+  name: bottle
+  role: admin
+  clusterName: teorange
+
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+    additional-tld-skip-patterns:
+  port: 8081
+  connection-timeout: 5000
+  context-path: /bottle/admin
+
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/xmpdb?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+  profiles:
+    include:
+    - axon-jgroups
+    - mybatisplus
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.teorange.magic.bottle.admin.modules.*.entity
+
+file:
+  path: ./post-import.xls

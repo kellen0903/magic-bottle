@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teorange.magic.bottle.api.mapper.PostMapper">
+
+    <resultMap type="com.teorange.magic.bottle.api.domain.PostEntity" id="postMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="userId" column="user_id"/>
+        <result property="week" column="week"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="temperature" column="temperature"/>
+        <result property="weather" column="weather"/>
+        <result property="publishStatus" column="publish_status"/>
+        <result property="shieldStatus" column="shield_status"/>
+        <result property="commentFlag" column="comment_flag"/>
+        <result property="tagId" column="tag_id"/>
+        <result property="tagName" column="tag_name"/>
+        <result property="commentCount" column="comment_count"/>
+        <result property="likeCount" column="like_count"/>
+        <result property="images" column="images"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="postUserName" column="post_user_name"/>
+        <result property="postTagName" column="post_tag_name"/>
+        <result property="linkUrl" column="link_url"/>
+        <result property="osType" column="os_type"/>
+    </resultMap>
+
+    <select id="queryPageList" resultMap="postMap">
+        SELECT post.*, magic_user.nick_name as post_user_name, tag.tag_name as post_tag_name
+        FROM post
+        LEFT JOIN magic_user ON post.user_id = magic_user.id
+        LEFT JOIN tag ON post.tag_id = tag.id
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="goupByCount" parameterType="Integer" resultType="Map">
+        select
+        <choose>
+            <when test="countType == 1">
+                DATE_FORMAT(create_time,'%Y%m%d') days,count(id) count from post group by days
+            </when>
+            <when test="countType == 2">
+                DATE_FORMAT(create_time,'%Y%u') weeks,count(id) count from post group by weeks
+            </when>
+            <when test="countType == 3">
+                DATE_FORMAT(create_time,'%Y%m') months,count(id) count from post group by months
+            </when>
+            <when test="countType == 4">
+                DATE_FORMAT(create_time,'%Y') years,count(id) count from post group by years
+            </when>
+        </choose>
+    </select>
+
+</mapper>

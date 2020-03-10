@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>cn.teorange.framework</groupId>
+    <artifactId>spring-boot-starters</artifactId>
+    <version>1.0.0.RELEASE</version>
+  </parent>
+
+  <groupId>com.teorange.magic</groupId>
+  <artifactId>magic-bottle</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>magic-bottle</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <lombok.version>1.16.12</lombok.version>
+
+  </properties>
+  <modules>
+    <module>bottle-api</module>
+    <module>bottle-command</module>
+    <module>bottle-admin</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>cn.teorange.framework</groupId>
+      <artifactId>spring-boot-starter-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>
