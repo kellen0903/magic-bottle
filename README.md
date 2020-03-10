@@ -64,7 +64,6 @@ cnpm run dev
 ![image](./doc/img/4.jpg)
 ![image](./doc/img/5.jpg)
 ![image](./doc/img/6.jpg)
-![image](./doc/img/7.jpg)
 
 
 
