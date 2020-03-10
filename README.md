@@ -4,11 +4,12 @@
 `magic-bottle`是一套匿名社交系统，采用DDD+CQRS+Event Sourcing架构，采用了Spring Boot、Mybatis Plus、Axon Framework等核心技术，同时提供ios、andriod、web后台的开源项目。
 
 ## 项目特色
-- 使用极光推送实现IM聊天
+- 使用极光推送实现IM聊天;
+- 使用CQRS架构，提升消息并发处理能力;
 - 完全开源，并提供ios、andriod客户端源码，可直接商用；
 - DDD真正落地的开源项目；
 - 提供完整的匿名社交解决方案；
-- 部署方便，支持分布式
+- 部署方便，支持分布式;
 
 ## 系统功能
 从业务功能上，目前主要有以下功能：
@@ -55,6 +56,18 @@ cnpm install
 cnpm run dev
 ```
 7.打开浏览器localhost:8001访问后台管理系统
+
+# 项目演示
+![image](./doc/img/0.jpg)
+![image](./doc/img/1.jpg)
+![image](./doc/img/2.jpg)
+![image](./doc/img/3.jpg)
+![image](./doc/img/4.jpg)
+![image](./doc/img/5.jpg)
+![image](./doc/img/6.jpg)
+![image](./doc/img/7.jpg)
+
+
 
 # 问题反馈
 
