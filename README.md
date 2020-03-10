@@ -58,7 +58,6 @@ cnpm run dev
 7.打开浏览器localhost:8001访问后台管理系统
 
 # 项目演示
-![image](./doc/img/0.jpg)
 ![image](./doc/img/1.jpg)
 ![image](./doc/img/2.jpg)
 ![image](./doc/img/3.jpg)
