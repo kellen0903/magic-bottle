@@ -16,7 +16,7 @@
     <java.version>1.8</java.version>
     <shiro.version>1.5.1</shiro.version>
 
-    <quartz.version>2.3.0</quartz.version>
+    <quartz.version>2.3.2</quartz.version>
     <!--wagon plugin 配置-->
     <service-path>/home/robot/server/bottle-admin</service-path>
     <pack-name>${project.artifactId}.jar</pack-name>
